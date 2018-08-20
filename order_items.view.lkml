@@ -38,6 +38,10 @@ view: order_items {
     sql: max(${created_date}) ;;
   }
 
+  measure: days_as_customer {
+    type: number
+    sql: datediff('day',${user_order_facts.min_of_order}, ${user_order_facts.max_of_order}) + 1 ;;
+  }
 
   dimension_group: delivered {
     type: time
