@@ -21,6 +21,24 @@ view: order_items {
     sql: ${TABLE}.created_at ;;
   }
 
+  measure: distinct_months {
+    type: count_distinct
+    sql: ${created_month} ;;
+  }
+
+  measure: min_of_order {
+    type: min
+    hidden: no
+    sql: ${created_date} ;;
+  }
+
+  measure: max_of_order {
+    type: max
+    hidden: no
+    sql: ${created_date} ;;
+  }
+
+
   dimension_group: delivered {
     type: time
     timeframes: [
@@ -46,6 +64,11 @@ view: order_items {
     sql: ${TABLE}.order_id ;;
   }
 
+  measure: lifetime_orders {
+    type: count_distinct
+    sql: ${order_id} ;;
+  }
+
   dimension_group: returned {
     type: time
     timeframes: [
@@ -63,6 +86,12 @@ view: order_items {
   dimension: sale_price {
     type: number
     sql: ${TABLE}.sale_price ;;
+  }
+
+  measure: total_sale_price {
+    type: sum
+    value_format_name: usd_0
+    sql: ${sale_price} ;;
   }
 
   dimension_group: shipped {
