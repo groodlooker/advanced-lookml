@@ -27,15 +27,15 @@ view: order_items {
   }
 
   measure: min_of_order {
-    type: min
+    type: date
     hidden: no
-    sql: ${created_date} ;;
+    sql: min(${created_date}) ;;
   }
 
   measure: max_of_order {
-    type: max
+    type: date
     hidden: no
-    sql: ${created_date} ;;
+    sql: max(${created_date}) ;;
   }
 
 
