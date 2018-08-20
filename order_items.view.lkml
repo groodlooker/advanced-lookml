@@ -7,6 +7,11 @@ view: order_items {
     sql: ${TABLE}.id ;;
   }
 
+  measure: order_items_count {
+    type: count_distinct
+    sql: ${id} ;;
+  }
+
   dimension_group: created {
     type: time
     timeframes: [
@@ -38,7 +43,7 @@ view: order_items {
     sql: max(${created_date}) ;;
   }
 
-  measure: days_as_customer {
+  dimension: days_as_customer {
     type: number
     sql: datediff('day',${user_order_facts.min_of_order}, ${user_order_facts.max_of_order}) + 1 ;;
   }
