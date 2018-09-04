@@ -6,10 +6,11 @@ include: "*.view.lkml"         # include all views in this project
 # # Select the views that should be a part of this model,
 # # and define the joins that connect them together.
 #
-explore: bsandell {
+explore: rg_race_results {
+  from: bsandell
   join: race_sequence {
     relationship: one_to_one
-    sql_on: ${bsandell.pitstop_id} = ${race_sequence.pitstop_id} ;;
+    sql_on: ${rg_race_results.pitstop_id} = ${race_sequence.pitstop_id} ;;
     type: left_outer
   }
 

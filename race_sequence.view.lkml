@@ -3,7 +3,7 @@
 
 view: race_sequence {
   derived_table: {
-    explore_source: bsandell {
+    explore_source: rg_race_results {
       column: racer_id {}
       column: pitstop_id {}
       column: time_spent_in_pit {}
